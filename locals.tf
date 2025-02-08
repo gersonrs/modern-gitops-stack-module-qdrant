@@ -4,13 +4,23 @@ locals {
 
   helm_values = [{
     qdrant = {
-      replicaCount = 1
-      # nameOverride = ""
-      # fullnameOverride = ""
+      replicaCount = 3
+
+      env = [
+        {
+          name  = "QDRANT__STORAGE__PERFORMANCE__OPTIMIZER_CPU_BUDGET"
+          value = 8
+        },
+        {
+          name  = "QDRANT__STORAGE__PERFORMANCE__MAX_SEARCH_THREADS"
+          value = 8
+        }
+
+      ]
 
       ingress = {
-        enabled = true
-        ingressClassName : ""
+        enabled          = true
+        ingressClassName = ""
         annotations = {
           "cert-manager.io/cluster-issuer"                   = "${var.cluster_issuer}"
           "traefik.ingress.kubernetes.io/router.entrypoints" = "websecure"
@@ -21,7 +31,6 @@ locals {
             host = local.domain
             paths = [{
               path        = "/"
-              pathType    = "Prefix"
               servicePort = 6333
             }]
           },
@@ -29,7 +38,6 @@ locals {
             host = local.domain_full
             paths = [{
               path        = "/"
-              pathType    = "Prefix"
               servicePort = 6333
             }]
           }
@@ -43,14 +51,14 @@ locals {
         }]
       }
 
-      resources : {
+      resources = {
         limits = {
-          cpu    = "1000m"
-          memory = "1Gi"
+          cpu    = 8
+          memory = "20Gi"
         }
         requests = {
-          cpu    = "100m"
-          memory = "128Mi"
+          cpu    = 1
+          memory = "1Gi"
         }
       }
 
@@ -60,13 +68,19 @@ locals {
 
       config = {
         cluster = {
-          enabled : true
+          enabled = true
+        }
+        performance = {
+          max_search_threads       = 8
+          max_optimization_threads = 0
+          optimizer_cpu_budget     = 8
+          update_rate_limit        = null
         }
       }
 
       metrics = {
         serviceMonitor = {
-          enabled : var.enable_service_monitor
+          enabled = var.enable_service_monitor
         }
       }
 
