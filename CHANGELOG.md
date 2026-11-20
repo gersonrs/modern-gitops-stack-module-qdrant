@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.0](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/compare/v1.2.0...v2.0.0) (2026-11-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* provider major bumps and a stricter Terraform baseline; consumers must run `terraform init -upgrade`.
+
+### 🚀 New Features
+
+* add namespace_labels variable to all modules ([07b7471](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/commit/07b7471a5e5bf719b1cf124109209b00eacad76f))
+* upgrade charts, providers and Terraform baseline ([#5](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/issues/5)) ([3b702ea](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/commit/3b702ea9817184bca1226c2da9a0f3ba106fd630))
+
+
+### 📦 CI Improvements
+
+* run release-please with GITHUB_TOKEN ([#6](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/issues/6)) ([d08553d](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/commit/d08553da1f24409b4f6386c4709d7d4c84a11fcd))
+
 ## [1.2.0](https://github.com/GersonRS/modern-gitops-stack-module-qdrant/compare/v1.1.0...v1.2.0) (2025-02-08)
 
 
