@@ -18,37 +18,10 @@ locals {
 
       ]
 
+      # Exposure is handled by the HTTPRoute below, served by the Istio
+      # gateway, so the chart's own Ingress stays disabled.
       ingress = {
-        enabled          = true
-        ingressClassName = ""
-        annotations = {
-          "cert-manager.io/cluster-issuer"                   = "${var.cluster_issuer}"
-          "traefik.ingress.kubernetes.io/router.entrypoints" = "websecure"
-          "traefik.ingress.kubernetes.io/router.tls"         = "true"
-        }
-        hosts = [
-          {
-            host = local.domain
-            paths = [{
-              path        = "/"
-              servicePort = 6333
-            }]
-          },
-          {
-            host = local.domain_full
-            paths = [{
-              path        = "/"
-              servicePort = 6333
-            }]
-          }
-        ]
-        tls = [{
-          secretName = "qdrant-tls"
-          hosts = [
-            local.domain,
-            local.domain_full,
-          ]
-        }]
+        enabled = false
       }
 
       resources = {
@@ -86,6 +59,15 @@ locals {
 
       apiKey         = true
       readOnlyApiKey = true
+    }
+  }]
+
+  helm_values_httproute = [{
+    httproute = {
+      enabled           = true
+      host              = local.domain
+      gateway_name      = var.gateway_name
+      gateway_namespace = var.gateway_namespace
     }
   }]
 }
