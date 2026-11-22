@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/compare/v3.0.0...v3.0.1) (2026-11-22)
+
+
+### 🔥 Bug Fixes
+
+* point the HTTPRoute at the qdrant Service by its real name ([#10](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/issues/10)) ([78a5c74](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/commit/78a5c74fadaf8abf40a7dc05991cd445608f70f4))
+
 ## [3.0.0](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/compare/v2.0.0...v3.0.0) (2026-11-22)
 
 
