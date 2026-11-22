@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/compare/v2.0.0...v3.0.0) (2026-11-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* the ingress object and its qdrant-tls secret are gone; the host is now served by the Istio gateway.
+
+### 🚀 New Features
+
+* expose Qdrant through the Istio gateway instead of Traefik ([#8](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/issues/8)) ([4e071b5](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/commit/4e071b5467f2584b0aa49495ed9aa0e5d77fc4ce))
+
 ## [2.0.0](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/compare/v1.2.0...v2.0.0) (2026-11-20)
 
 
