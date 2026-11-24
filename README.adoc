@@ -1,4 +1,48 @@
 = modern-gitops-stack-module-qdrant
+// Document attributes to replace along the document
+:qdrant-chart-version: 1.20.2
+:original-repo-url: https://github.com/qdrant/qdrant-helm
+
+A https://modern-gitops-stack.io[Modern GitOps Stack] module to deploy Qdrant, a vector database for similarity search and embeddings.
+
+The qdrant chart used by this module is shipped in this repository as well, in order to avoid any unwanted behaviors caused by unsupported versions.
+
+[cols="1,1,1",options="autowidth,header"]
+|===
+|Current Chart Version |Original Repository |Default Values
+|*1.20.2* |https://github.com/qdrant/qdrant-helm/tree/main/charts/qdrant[qdrant] |https://artifacthub.io/packages/helm/qdrant/qdrant/1.20.2?modal=values[`values.yaml`]
+|===
+
+== Usage
+
+This module can be declared by adding the following block to your Terraform configuration:
+
+[source,terraform]
+----
+module "qdrant" {
+  source = "git::https://github.com/GersonRS/modern-gitops-stack-module-qdrant.git?ref=<RELEASE>"
+
+  cluster_name   = local.cluster_name
+  base_domain    = local.base_domain
+  subdomain      = local.subdomain
+  cluster_issuer = local.cluster_issuer
+  app_autosync   = local.app_autosync
+
+  dependency_ids = {
+    istio = module.istio.id
+  }
+}
+----
+
+The application is deployed to the `vectorstore` namespace.
+
+== Technical Reference
+
+=== Dependencies
+
+==== `module.istio.id`
+
+Qdrant is exposed through the Istio gateway.
 
 // BEGIN_TF_DOCS
 === Requirements
