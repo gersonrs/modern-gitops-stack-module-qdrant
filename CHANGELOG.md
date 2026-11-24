@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/compare/v3.0.1...v3.0.2) (2026-11-24)
+
+
+### 📚 Documentation
+
+* add usage and dependencies to the module documentation ([#12](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/issues/12)) ([add2e6c](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/commit/add2e6c5960dfc3f39d192be9eceb4ed8a799c84))
+
 ## [3.0.1](https://github.com/gersonrs/modern-gitops-stack-module-qdrant/compare/v3.0.0...v3.0.1) (2026-11-22)
 
 
